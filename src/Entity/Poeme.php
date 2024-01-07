@@ -21,10 +21,10 @@ class Poeme
     private ?string $contenu = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom_auteur = null;
+    private ?string $nomAuteur = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $prenom_auteur = null;
+    private ?string $prenomAuteur = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -61,24 +61,24 @@ class Poeme
 
     public function getNomAuteur(): ?string
     {
-        return $this->nom_auteur;
+        return $this->nomAuteur;
     }
 
-    public function setNomAuteur(string $nom_auteur): static
+    public function setNomAuteur(string $nomAuteur): static
     {
-        $this->nom_auteur = $nom_auteur;
+        $this->nomAuteur = $nomAuteur;
 
         return $this;
     }
 
     public function getPrenomAuteur(): ?string
     {
-        return $this->prenom_auteur;
+        return $this->prenomAuteur;
     }
 
-    public function setPrenomAuteur(?string $prenom_auteur): static
+    public function setPrenomAuteur(?string $prenomAuteur): static
     {
-        $this->prenom_auteur = $prenom_auteur;
+        $this->prenomAuteur = $prenomAuteur;
 
         return $this;
     }

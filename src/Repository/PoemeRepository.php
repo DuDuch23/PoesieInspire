@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Poeme;
+use App\Repository\Traits\PaginateTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,6 +21,8 @@ class PoemeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Poeme::class);
     }
+
+    use PaginateTrait;
 
 //    /**
 //     * @return Poeme[] Returns an array of Poeme objects
