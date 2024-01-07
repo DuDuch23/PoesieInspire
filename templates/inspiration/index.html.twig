@@ -3,31 +3,38 @@
 {% block title %}Inspirations Poésie Inspire{% endblock %}
 
 {% block body %}
-
-<section class="section-poeme">
-    <div class="container">
-        <div class="row justify-content-center text-center">
+    <section class="section-poeme w-100 p-4">
+        <div class="row justify-content-center text-center w-100 p-4">
             <div class="col-md-8 col-lg-6">
                 <div class="header">
-                    <h2>Liste des poèmes</h2>
+                    <h1>Liste des poèmes</h1>
                 </div>
             </div>
         </div>
         <div class="row">
             {% for poeme in poemes %}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="poeme">
-                    <p>{{ poeme.titre }}</p>
-                    <p>{{ poeme.contenu }}</p>
-                    <p>{{ poeme.nomAuteur }}</p>
-                    <p>{{ poeme.prenomAuteur }}</p>
-                    <p>{{ poeme.theme }}</p>
+            <div class="col-md-12 col-lg-4 mb-4 mb-lg-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-center p-3">
+                        <p>{{ poeme.titre }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ poeme.contenu }}</p>
+                        <div class="card-body">
+                            <p>Nom de l'auteur : {{ poeme.nomAuteur }}</p>
+                            {% if poeme.prenomAuteur == null %}
+                                <p>Prénom de l'auteur : Prénom inconnu</p>
+                            {% else %}
+                                <p>Prénom de l'auteur : {{ poeme.prenomAuteur }}</p>
+                            {% endif %}
+                            <p>{{ poeme.theme }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-    </div>
-</section>
+    </section>
 {% include "components/pagination.html.twig" with {
     route: 'inspiration',
     currentPage,

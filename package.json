@@ -8,5 +8,8 @@
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "production": "encore production"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2"
   }
 }

@@ -15,23 +15,23 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            <div>
+        <div class="container">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-center py-3 mb-4 border-bottom">
                 <nav class="navbar">
-                    <ul>
+                    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
+                            <a class="nav-link px-2 link-secondary" href="{{ path('accueil') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('inspiration') }}">Inspirations</a>
+                            <a class="nav-link px-2 link-secondary" href="{{ path('inspiration') }}">Inspirations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('soumettre') }}">Soumettre un poème</a>
+                            <a class="nav-link px-2 link-secondary" href="{{ path('soumettre') }}">Soumettre un poème</a>
                         </li>
                     </ul>
                 </nav>
-            </div>
-        </header>
+            </header>
+        </div>
         {% block body %}{% endblock %}
     </body>
 </html>

@@ -11,10 +11,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'accueil')]
-    public function accueil(Request $request, PoemeRepository $poemeRepository): Response
+    public function accueil(PoemeRepository $poemeRepository): Response
     {
+        $allPoemes = $poemeRepository->findAll();
+
+        $randomPoemesKeys = array_rand($allPoemes, 5);
+        $randomPoemes = array_intersect_key($allPoemes, array_flip($randomPoemesKeys));
+
         return $this->render('home/index.html.twig', [
-            //'poeme' => $poeme,
+            'randomPoemes' => $randomPoemes,
             'controller_name' => 'HomeController',
         ]);
     }
