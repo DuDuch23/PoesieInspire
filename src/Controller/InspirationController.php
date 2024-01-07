@@ -23,13 +23,38 @@ class InspirationController extends AbstractController
         {
             throw $this->createNotFoundException();
         }
+        
+        $searchTerm = $request->query->get('search');
+        if($searchTerm)
+        {
+            $foundPoeme = $poemeRepository->searchByTitle($searchTerm);
+
+            if($foundPoeme)
+            {
+                return $this->redirectToRoute('afficher_poeme', ['id' => $foundPoeme[0]->getId()]);
+            }
+        }
 
         $poemes = $poemeRepository->paginate('p', $currentPage, $countPerPage);
-
+        
         return $this->render('inspiration/index.html.twig', [
             'poemes' => $poemes,
             'countPages' => $countPages,
             'currentPage' => $currentPage,
+        ]);
+    }
+
+    #[Route('/poeme/{id}', name: 'afficher_poeme', requirements: ['id' => '\d+'])]
+    public function afficherPoeme(int $id, PoemeRepository $poemeRepository): Response
+    {
+        $poeme = $poemeRepository->find($id);
+
+        if (!$poeme) {
+            return $this->redirectToRoute('inspiration');
+        }
+
+        return $this->render('components/afficher_poeme.html.twig', [
+            'poemeInfo' => $poeme,
         ]);
     }
 }

@@ -11,6 +11,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{ path('inspiration') }}" method="get" class="form-inline mb-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" placeholder="Rechercher un poème">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="row">
             {% for poeme in poemes %}
             <div class="col-md-12 col-lg-4 mb-4 mb-lg-4">

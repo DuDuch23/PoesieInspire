@@ -24,6 +24,15 @@ class PoemeRepository extends ServiceEntityRepository
 
     use PaginateTrait;
 
+    public function searchByTitle(string $title)
+    {
+        return $this->createQueryBuilder('poeme')
+            ->where('poeme.titre LIKE :title')
+            ->setParameter('title', '%'.$title.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Poeme[] Returns an array of Poeme objects
 //     */
