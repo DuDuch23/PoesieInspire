@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Poésie Inspire{% endblock %}
+
+{% block body %}
+    <section class="section-poeme w-100 p-4">
+        <div class="row justify-content-center text-center w-100 p-4">
+            <div class="col-md-8 col-lg-6">
+                <div class="header">
+                    <h2>Bienvenue sur Poésie Inspire</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for random in randomPoemes %}
+            <div class="col-md-12 col-lg-4 mb-4 mb-lg-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-center p-3">
+                        <p>{{ random.titre }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ random.contenu }}</p>
+                        <div class="card-body">
+                            <p>{{ random.nomAuteur }}</p>
+                            {% if random.prenomAuteur == null %}
+                                <p>Prénom inconnu</p>
+                            {% else %}
+                                <p>{{ random.prenomAuteur }}</p>
+                            {% endif %}
+                            <p>{{ random.theme }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

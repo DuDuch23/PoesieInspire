@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Poeme;
+use App\Repository\Traits\PaginateTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,6 +20,17 @@ class PoemeRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Poeme::class);
+    }
+
+    use PaginateTrait;
+
+    public function searchByTitle(string $title)
+    {
+        return $this->createQueryBuilder('poeme')
+            ->where('poeme.titre LIKE :title')
+            ->setParameter('title', '%'.$title.'%')
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

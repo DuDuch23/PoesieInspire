@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="section-poeme w-100 p-4">
+        <div class="row justify-content-center text-center w-100 p-4">
+            <div class="col-md-8 col-lg-6">
+                <div class="header">
+                    <h1>Poème : {{ poemeInfo.titre }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-4 mb-4 mb-lg-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-center p-3">
+                        <p>{{ poemeInfo.titre }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ poemeInfo.contenu }}</p>
+                        <div class="card-body">
+                            <p>Nom de l'auteur : {{ poemeInfo.nomAuteur }}</p>
+                            {% if poemeInfo.prenomAuteur == null %}
+                                <p>Prénom de l'auteur : Prénom inconnu</p>
+                            {% else %}
+                                <p>Prénom de l'auteur : {{ poemeInfo.prenomAuteur }}</p>
+                            {% endif %}
+                            <p>{{ poemeInfo.theme }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -32,4 +32,14 @@ class Theme
 
         return $this;
     }
+
+    /**
+     * Obtient une représentation en chaîne du thème.
+     *
+     * @return string|null
+     */
+    public function __toString(): string
+    {
+        return $this->nom_theme;
+    }
 }

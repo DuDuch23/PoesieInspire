@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soumettre un poème!{% endblock %}
+
+{% block body %}
+    <section class="section-soumettre w-100 p-4">
+        <div class="container">
+            <div class="row justify-content-center text-center w-100  p-4">
+                <div class="col-md-8 col-lg-6">
+                    <div class="header">
+                        <h1>Soumettre un poème</h1>
+                    </div>
+                </div>
+            </div>
+            {{ form_start(form) }}
+                {{ form_row(form.titre) }}
+                {{ form_row(form.contenu) }}
+                {{ form_row(form.theme) }}
+                {{ form_row(form.nomAuteur) }}
+                {{ form_row(form.prenomAuteur) }}
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

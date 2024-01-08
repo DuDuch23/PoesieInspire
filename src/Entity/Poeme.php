@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PoemeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PoemeRepository::class)]
 class Poeme
@@ -15,19 +16,23 @@ class Poeme
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le titre est obligatoire.')]
     private ?string $titre = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Un contenu est obligatoire.')]
     private ?string $contenu = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom_auteur = null;
+    #[Assert\NotBlank(message: 'Le nom de l\'auteur est obligatoire.')]
+    private ?string $nomAuteur = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $prenom_auteur = null;
+    private ?string $prenomAuteur = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank(message: 'Le thème est obligatoire.')]
     private ?Theme $theme = null;
 
     public function getId(): ?int
@@ -61,24 +66,24 @@ class Poeme
 
     public function getNomAuteur(): ?string
     {
-        return $this->nom_auteur;
+        return $this->nomAuteur;
     }
 
-    public function setNomAuteur(string $nom_auteur): static
+    public function setNomAuteur(string $nomAuteur): static
     {
-        $this->nom_auteur = $nom_auteur;
+        $this->nomAuteur = $nomAuteur;
 
         return $this;
     }
 
     public function getPrenomAuteur(): ?string
     {
-        return $this->prenom_auteur;
+        return $this->prenomAuteur;
     }
 
-    public function setPrenomAuteur(?string $prenom_auteur): static
+    public function setPrenomAuteur(?string $prenomAuteur): static
     {
-        $this->prenom_auteur = $prenom_auteur;
+        $this->prenomAuteur = $prenomAuteur;
 
         return $this;
     }
